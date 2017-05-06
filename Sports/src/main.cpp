@@ -10,9 +10,17 @@
 Да се изведе класиране по медали по държави. */
 
 #include <iostream>
+#include "Start.h"
 
 int main()
 {
+	Athlete* athlete1 = new Athlete("Petur", "Stoqnov", 12.4f, "Nejer");
+
+	Date* date = new Date(1, 5, 2017);
+	Discipline* discipline = new Discipline("Swimming", 1.12f, 1.01f);
+	Start* start = new Start(*date, 12.30f, *discipline, qualification);
+	start->addAthlete(*athlete1);
+	start->qialification(12.4f);
 
 	return 0;
 }

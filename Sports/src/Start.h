@@ -22,11 +22,29 @@ private:
 	float _hour;
 	Discipline _discipline;
 	std::vector<Athlete*> _athletes;
+	std::vector<Athlete*> _qualifiedAthletes;
 	TypeEnum _type;
 
 public:
 	Start();
+	Start(Date& date, float hour, Discipline& discipline, TypeEnum type);
 	virtual ~Start();
+
+	//getters
+	const Date& getDate() const;
+	const Discipline& getDiscipline() const;
+	float getHour() const;
+	TypeEnum getType() const;
+
+	//setters
+	void setDate(const Date& date);
+	void setDiscipline(const Discipline& discipline);
+	void setHour(float hour);
+	void setType(TypeEnum type);
+
+	void addAthlete(Athlete& athlete);
+
+	void qialification(float time);
 };
 
 #endif /* SRC_START_H_ */
