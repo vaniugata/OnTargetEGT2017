@@ -12,11 +12,14 @@
 #include "Discipline.h"
 #include "Athlete.h"
 #include <vector>
+#include <ostream>
 
 enum TypeEnum {qualification,  quarterfinal, semifinal, final};
 
 class Start
 {
+	friend std::ostream& operator << (std::ostream& output, Start& start);
+
 private:
 	Date _date;
 	float _hour;

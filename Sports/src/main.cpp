@@ -22,6 +22,8 @@ int main()
 	start->addAthlete(*athlete1);
 	start->qialification(12.4f);
 
+	std::cout << *start;
+
 	return 0;
 }
 

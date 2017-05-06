@@ -77,3 +77,22 @@ void Start::qialification(float time)
 		}
 	}
 }
+
+std::ostream& operator << (std::ostream& output, Start& start)
+{
+	output << "Event info:\n";
+	output << "Date: " << start._date.toString() << " Time: " << start._hour << "\n";
+	output << "Discipline: " << start._discipline.getName() <<
+			" Current record: " << start._discipline.getCurrentCompetitionRecord() << "\n";
+
+	std::vector<Athlete*>::iterator athlete;
+	for ( athlete = start._athletes.begin(); athlete != start._athletes.end(); athlete++)
+		{
+			output << (*athlete)->getFirstName() << " "
+					<< (*athlete)->getLastName() <<
+					" Record: "	<< (*athlete)->getRecord()
+					<< " " << (*athlete)->getNationatlity() << "\n";
+		}
+
+	return output;
+}
