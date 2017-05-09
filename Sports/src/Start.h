@@ -1,17 +1,10 @@
-/*
- * Start.h
- *
- *  Created on: May 5, 2017
- *      Author: vaniugata
- */
-
 #ifndef SRC_START_H_
 #define SRC_START_H_
 
 #include "Date.h"
 #include "Discipline.h"
 #include "Athlete.h"
-#include <vector>
+#include <map>
 #include <ostream>
 
 enum TypeEnum {qualification,  quarterfinal, semifinal, final};
@@ -22,10 +15,10 @@ class Start
 
 private:
 	Date _date;
-	float _hour;
+	float _time;
 	Discipline _discipline;
-	std::vector<Athlete*> _athletes;
-	std::vector<Athlete*> _qualifiedAthletes;
+	std::map<int, Athlete*> _athletes;
+	std::map<int, Athlete*> _qualifiedAthletes;
 	TypeEnum _type;
 
 public:
@@ -36,18 +29,18 @@ public:
 	//getters
 	const Date& getDate() const;
 	const Discipline& getDiscipline() const;
-	float getHour() const;
+	float getTime() const;
 	TypeEnum getType() const;
 
 	//setters
 	void setDate(const Date& date);
 	void setDiscipline(const Discipline& discipline);
-	void setHour(float hour);
+	void setTime(float hour);
 	void setType(TypeEnum type);
 
-	void addAthlete(Athlete& athlete);
+	void addAthlete(int id, Athlete& athlete);
 
-	void qialification(float time);
+	void qualify(float time);
 };
 
 #endif /* SRC_START_H_ */

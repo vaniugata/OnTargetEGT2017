@@ -1,24 +1,19 @@
-/*
- * Athlete.cpp
- *
- *  Created on: May 3, 2017
- *      Author: vaniugata
- */
-
 #include "Athlete.h"
 
 Athlete::Athlete()
 {
 	this->_record = 0.0f;
+	this->_id = 0.0f;
 }
 
 Athlete::Athlete(std::string firstName, std::string lastName, float record,
-		std::string nationality)
+		std::string nationality, int id)
 {
 	setFirstName(firstName);
 	setLastName(lastName);
 	setRecord(record);
 	setNationality(nationality);
+	setId(id);
 }
 
 void Athlete::setFirstName(const std::string& firstName)
@@ -51,6 +46,21 @@ const std::string& Athlete::getNationatlity() const
 	return _nationality;
 }
 
+int Athlete::getId() const
+{
+	return _id;
+}
+
+void Athlete::setId(int id)
+{
+	_id = id;
+}
+
+const std::string& Athlete::getNationality() const
+{
+	return _nationality;
+}
+
 float Athlete::getRecord() const
 {
 	return _record;
@@ -63,6 +73,5 @@ void Athlete::setRecord(float record)
 
 Athlete::~Athlete()
 {
-	// TODO Auto-generated destructor stub
 }
 

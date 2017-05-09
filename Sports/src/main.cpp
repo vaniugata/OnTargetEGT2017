@@ -14,13 +14,17 @@
 
 int main()
 {
-	Athlete* athlete1 = new Athlete("Petur", "Stoqnov", 12.4f, "Nejer");
+	Discipline* discipline = new Discipline("Running 500m", 1.12f, 1.01f);
+	Start* start = new Start(*new Date(7, 5, 2017), 12.30f, *discipline, qualification);
 
-	Date* date = new Date(1, 5, 2017);
-	Discipline* discipline = new Discipline("Swimming", 1.12f, 1.01f);
-	Start* start = new Start(*date, 12.30f, *discipline, qualification);
-	start->addAthlete(*athlete1);
-	start->qialification(12.4f);
+	Athlete* a1 = new Athlete("Petur", "Stoqnov", 12.4f, "Nejer", 1);
+	Athlete* a2 = new Athlete("Aleksander", "Povetkin", 12.5f, "Ukraine", 1);
+	Athlete* a3 = new Athlete("Mitko", "Shtangata", 10.5f, "Bulgaria", 1);
+
+	start->addAthlete(1, *a1);
+	start->addAthlete(2, *a2);
+	start->addAthlete(3, *a3);
+	start->qualify(12.4f);
 
 	std::cout << *start;
 

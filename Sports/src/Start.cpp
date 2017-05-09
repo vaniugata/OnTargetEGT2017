@@ -1,18 +1,23 @@
 
 #include "Start.h"
+#include <iostream>
 
 Start::Start()
 {
-	_hour = 0.0f;
+	_time = 0.0f;
 	_type = qualification;
 }
 
 Start::Start(Date& date, float hour, Discipline& discipline, TypeEnum type)
 {
 	setDate(date);
-	setHour(hour);
+	setTime(hour);
 	setDiscipline(discipline);
 	setType(type);
+}
+
+Start::~Start()
+{
 }
 
 const Date& Start::getDate() const
@@ -25,9 +30,9 @@ const Discipline& Start::getDiscipline() const
 	return _discipline;
 }
 
-float Start::getHour() const
+float Start::getTime() const
 {
-	return _hour;
+	return _time;
 }
 
 TypeEnum Start::getType() const
@@ -45,9 +50,9 @@ void Start::setDiscipline(const Discipline& discipline)
 	_discipline = discipline;
 }
 
-void Start::setHour(float hour)
+void Start::setTime(float hour)
 {
-	_hour = hour;
+	_time = hour;
 }
 
 void Start::setType(TypeEnum type)
@@ -55,44 +60,44 @@ void Start::setType(TypeEnum type)
 	_type = type;
 }
 
-Start::~Start()
+
+void Start::addAthlete(int id, Athlete& athlete)
 {
-	// TODO Auto-generated destructor stub
+	std::cout << &athlete;
+	this->_athletes[id] = &athlete;
 }
 
-void Start::addAthlete(Athlete& athlete)
+void Start::qualify(float time)
 {
-	this->_athletes.push_back(&athlete);
-}
-
-void Start::qialification(float time)
-{
-	std::vector<Athlete*>::iterator athlete;
-
-	for ( athlete = _athletes.begin(); athlete != _athletes.end(); athlete++)
-	{
-		if ( (*athlete)->getRecord() <= time)
-		{
-			this->_qualifiedAthletes.push_back(*athlete);
-		}
-	}
+	//TOOD: REFACTOR THIS
 }
 
 std::ostream& operator << (std::ostream& output, Start& start)
 {
 	output << "Event info:\n";
-	output << "Date: " << start._date.toString() << " Time: " << start._hour << "\n";
+	output << "Date: " << start._date.toString() << " Time: " << start._time << "\n";
 	output << "Discipline: " << start._discipline.getName() <<
 			" Current record: " << start._discipline.getCurrentCompetitionRecord() << "\n";
 
-	std::vector<Athlete*>::iterator athlete;
+	output << "Competitors:\n";
+
+	std::map<int,Athlete*>::iterator athlete;
 	for ( athlete = start._athletes.begin(); athlete != start._athletes.end(); athlete++)
 		{
-			output << (*athlete)->getFirstName() << " "
-					<< (*athlete)->getLastName() <<
-					" Record: "	<< (*athlete)->getRecord()
-					<< " " << (*athlete)->getNationatlity() << "\n";
+			output << athlete->second->getFirstName() << " "
+
+					<< athlete->second->getLastName() <<
+					" Record: "	<< athlete->second->getRecord()
+					<< " " << athlete->second->getNationatlity() << "\n";
 		}
+	output << "Finalists:\n";
+	for ( athlete = start._qualifiedAthletes.begin(); athlete != start._qualifiedAthletes.end(); athlete++)
+			{
+				output << athlete->second->getFirstName() << " "
+						<< athlete->second->getLastName() <<
+						" Record: "	<< athlete->second->getRecord()
+						<< " " << athlete->second->getNationatlity() << "\n";
+			}
 
 	return output;
 }
