@@ -31,6 +31,7 @@ public:
 	const Discipline& getDiscipline() const;
 	float getTime() const;
 	TypeEnum getType() const;
+	const std::map<int, Athlete*>& getAthletes() const;
 
 	//setters
 	void setDate(const Date& date);
@@ -39,8 +40,7 @@ public:
 	void setType(TypeEnum type);
 
 	void addAthlete(int id, Athlete& athlete);
-
-	void qualify(float time);
+	void addQualifiedAthelete(int id, Athlete& athlete);
 };
 
 #endif /* SRC_START_H_ */

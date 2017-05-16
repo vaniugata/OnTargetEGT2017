@@ -14,7 +14,7 @@ private:
 
 public:
 	Athlete();
-	Athlete(std::string firstName, std::string lastName, float record, std::string nationality, int id);
+	Athlete(int id, std::string firstName, std::string lastName, float record, std::string nationality);
 	virtual ~Athlete();
 
 	//setters

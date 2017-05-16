@@ -63,13 +63,12 @@ void Start::setType(TypeEnum type)
 
 void Start::addAthlete(int id, Athlete& athlete)
 {
-	std::cout << &athlete;
-	this->_athletes[id] = &athlete;
+	this->_athletes.insert(std::pair<int,Athlete*>(id, &athlete));
 }
 
-void Start::qualify(float time)
+void Start::addQualifiedAthelete(int id, Athlete& athlete)
 {
-	//TOOD: REFACTOR THIS
+	this->_qualifiedAthletes.insert(std::pair<int, Athlete*>(id, &athlete));
 }
 
 std::ostream& operator << (std::ostream& output, Start& start)
@@ -100,4 +99,9 @@ std::ostream& operator << (std::ostream& output, Start& start)
 			}
 
 	return output;
+}
+
+const std::map<int, Athlete*>& Start::getAthletes() const
+{
+	return _athletes;
 }

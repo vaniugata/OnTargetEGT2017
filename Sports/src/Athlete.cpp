@@ -6,8 +6,8 @@ Athlete::Athlete()
 	this->_id = 0.0f;
 }
 
-Athlete::Athlete(std::string firstName, std::string lastName, float record,
-		std::string nationality, int id)
+Athlete::Athlete(int id, std::string firstName, std::string lastName, float record,
+		std::string nationality)
 {
 	setFirstName(firstName);
 	setLastName(lastName);

@@ -15,18 +15,18 @@
 int main()
 {
 	Discipline* discipline = new Discipline("Running 500m", 1.12f, 1.01f);
-	Start* start = new Start(*new Date(7, 5, 2017), 12.30f, *discipline, qualification);
+	Start* qualificationStart = new Start(*new Date(7, 5, 2017), 12.30f, *discipline, qualification);
+	Start* quarterfinalStart = new Start(*new Date(12, 4, 2017), 22.45f, *discipline, quarterfinal);
 
-	Athlete* a1 = new Athlete("Petur", "Stoqnov", 12.4f, "Nejer", 1);
-	Athlete* a2 = new Athlete("Aleksander", "Povetkin", 12.5f, "Ukraine", 1);
-	Athlete* a3 = new Athlete("Mitko", "Shtangata", 10.5f, "Bulgaria", 1);
+	Athlete* a1 = new Athlete(1, "Petur", "Stoqnov", 12.4f, "Nejer");
+	Athlete* a2 = new Athlete(2, "Aleksander", "Povetkin", 12.5f, "Ukraine");
+	Athlete* a3 = new Athlete(3, "Mitko", "Shtangata", 10.5f, "Bulgaria");
 
-	start->addAthlete(1, *a1);
-	start->addAthlete(2, *a2);
-	start->addAthlete(3, *a3);
-	start->qualify(12.4f);
+	qualificationStart->addAthlete(a1->getId(), *a1);
+	qualificationStart->addAthlete(a2->getId(), *a2);
+	qualificationStart->addAthlete(a3->getId(), *a3);
 
-	std::cout << *start;
+	std::cout << *qualificationStart;
 
 	return 0;
 }
