@@ -1,44 +1,42 @@
+#ifndef HELPERS_H
+#define HELPERS_H
+
 #include <string>
 #include <iostream>
-using std::cerr;
-#include <locale>
-using std::toupper;
-#include <sstream>
-#include <iomanip>
-using std::setprecision;
 
 namespace helpers
 {
-std::string toupper(const std::string& input)
+std::string toupper(const std::string& input);
+const std::string formatCurrency(const std::string& currency, double amount);
+
+ template<typename T> void printArr(T* arr, int size)
 {
-	std::string result;
-	for (unsigned int i = 0; i < input.length(); ++i)
+	std::cout << "[";
+	for (int i = 0; i < size; ++i)
 	{
-		result += std::toupper(input[i]);
+		std::cout << arr[i];
+
+		if( i < size - 1)
+			std::cout << ", ";
 	}
-	return result;
+	std::cout << "]";
 }
 
-std::string formatCurrency(const std::string& currency, double amount)
+template <typename T> void printMatrix(T** matrix, int rows, int cols)
 {
-	std::string result;
-	std::stringstream ss;
-	if(currency.length() != 3)
+	for (int i = 0; i < rows; ++i)
 	{
-		std::cerr << "Invalid currency format!\n";
-		return "";
+		std::cout << "[";
+		for (int j = 0; j < cols; ++j)
+		{
+			std::cout << matrix[i][j];
+			if(j < cols - 1)
+				std::cout << ", ";
+		}
+		std::cout << "]\n";
 	}
-
-	ss << std::fixed << std::setprecision(9) << amount;
-
-	ss >> result;
-	result.append(" ");
-	result.append(toupper(currency));
-
-	return result;
 }
-
-
 
 
 } // namespace: hepler
+#endif
