@@ -1,0 +1,4 @@
+Read students' data from pre-existing XML file and load them in memory.
+Create a students class to hold the data in an object.
+Collect all objects in container and manipulate the records:
+ex. Save the data in a text file.
