@@ -1,0 +1,56 @@
+Ivan	Petrov
+Male
+19.02.1995
+0875124135
+ipetrov@uni.bg
+Telecomunications
+91291200
+Exams:
+Mathematics Prof. Ronkov 5
+Physics Prof. Koprinkov 4
+Australian doc. Dundy 6
+Mechanics prof. Borovska 3
+Programming prof. Nakov 5
+=========================================================
+Petar	Trandov
+Male
+09.07.1995
+0983533122
+ptrandov@uni.bg
+Practical Mathematics
+929292912
+Exams:
+Mathematics Prof. Ronkov 3
+Physics Prof. Koprinkov 4
+Australian doc. Dundy 5
+Mechanics prof. Borovska 6
+Programming prof. Nakov 5
+=========================================================
+Poli	Sasheva
+Female
+01.05.1996
+021414323
+psasheva@uni.bg
+Computer Science
+25434352
+Exams:
+Mathematics Prof. Ronkov 2
+PlaneSyncing Prof. Koprinkov 4
+Cooking doc. Dundy 3
+Swimming prof. Borovska 6
+Driving prof. Nakov 5
+=========================================================
+Henry	Porter
+Unknown
+01.01.1900
+3242532
+hporter@unknown.com
+Magic
+934324
+Exams:
+LateNight Snacking Prof. Snacky 4
+Catching Mice Prof. Tom 4
+Transformation doc. Dumbledor 4
+Flying prof. Dumbo 4
+Programming prof. Nakov 4
+=========================================================
