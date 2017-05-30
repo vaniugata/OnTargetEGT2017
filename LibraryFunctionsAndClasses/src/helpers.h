@@ -39,5 +39,12 @@ template <typename T> void printMatrix(T** matrix, int rows, int cols)
 
 double myRound(double d_number, int decimalPlaces);
 
+struct RealNumber
+{
+	int quotient;
+	int remainder;
+};
+RealNumber devide(int devisible, int devider);
+
 } // namespace: heplers
 #endif

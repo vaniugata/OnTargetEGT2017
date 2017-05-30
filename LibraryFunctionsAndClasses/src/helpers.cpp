@@ -65,6 +65,15 @@ double myRound(double d_number, int decimalPlaces)
 	return round(d_number * multiplicator) / multiplicator;
 }
 
+RealNumber devide(int devisible, int devider)
+{
+	RealNumber rn;
+	rn.remainder = devisible % devider;
+	rn.quotient = devisible / devider;
+
+	return rn;
+}
+
 } // helpers
 
 
