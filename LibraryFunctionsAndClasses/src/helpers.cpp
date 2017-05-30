@@ -74,6 +74,15 @@ RealNumber devide(int devisible, int devider)
 	return rn;
 }
 
+int getRandFromRange(int from, int to)
+{
+	srand(time(NULL));
+
+	int result = rand() % (to - from) + from;
+
+	return result;
+}
+
 } // helpers
 
 

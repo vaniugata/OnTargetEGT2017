@@ -52,14 +52,7 @@ struct RealNumber
 
 RealNumber devide(int devisible, int devider);
 
-template <typename T> T getRandFromRange(T from, T to)
-{
-	srand(time(NULL));
-
-	T result = rand() % (to - from) + from;
-
-	return result;
-}
+int getRandFromRange(int from, int to);
 
 } // namespace: heplers
 #endif
