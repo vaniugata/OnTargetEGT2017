@@ -3,9 +3,14 @@
 
 #include <string>
 #include <iostream>
+#include <cstdlib>
+using std::rand;
+#include <time.h>
+using std::srand;
 
 namespace helpers
 {
+
 std::string toupper(const std::string& input);
 const std::string formatCurrency(const std::string& currency, double amount);
 
@@ -44,7 +49,17 @@ struct RealNumber
 	int quotient;
 	int remainder;
 };
+
 RealNumber devide(int devisible, int devider);
+
+template <typename T> T getRandFromRange(T from, T to)
+{
+	srand(time(NULL));
+
+	T result = rand() % (to - from) + from;
+
+	return result;
+}
 
 } // namespace: heplers
 #endif

@@ -7,9 +7,7 @@ using namespace helpers;
 
 int main()
 {
-	RealNumber rn;
-	rn = helpers::devide(5,2);
-	std::cout << rn.quotient << "," << rn.remainder;
+	std::cout << helpers::getRandFromRange(2, 5);
 
 	return 0;
 }
