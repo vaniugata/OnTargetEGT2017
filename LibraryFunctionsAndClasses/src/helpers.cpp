@@ -5,8 +5,11 @@ using std::cerr;
 #include <locale>
 using std::toupper;
 #include <sstream>
+using std::stringstream;
 #include <iomanip>
 using std::setprecision;
+#include <math.h>
+
 
 namespace helpers
 {
@@ -37,6 +40,29 @@ const std::string formatCurrency(const std::string& currency, double amount)
 	result.append(toupper(currency));
 
 	return result;
+}
+
+double myRound(double d_number, int decimalPlaces)
+{
+	if(decimalPlaces < 0)
+	{
+		long long result = (long long)d_number;
+		for (int i = 0; i < decimalPlaces * -1; ++i)
+		{
+			int rem = result % 10;
+			if(rem >= 5)
+			{
+				result += 1;
+			}
+
+			result /= 10;
+		}
+
+		return (double)result;
+	}
+
+	double multiplicator = pow(10, decimalPlaces);
+	return round(d_number * multiplicator) / multiplicator;
 }
 
 } // helpers

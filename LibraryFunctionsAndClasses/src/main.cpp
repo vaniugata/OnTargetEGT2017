@@ -1,26 +1,15 @@
 #include "helpers.h"
 #include <iostream>
+#include <string>
+#include <iomanip>
+#include <math.h>
+using namespace helpers;
 
 int main()
 {
-	int rows, cols;
-	std::cin >> rows >> cols;
 
-	int** matrix = new int*[rows];
-	for (int i = 0; i < rows; ++i)
-	{
-		matrix[i] = new int[cols];
-	}
-
-	for (int i = 0; i < rows; ++i)
-	{
-		for (int j = 0; j < cols; ++j)
-		{
-			std::cin >> matrix[i][j];
-		}
-	}
-
-	helpers::printMatrix(matrix, rows, cols);
+	double n = 1234.5678;
+	std::cout << std::setprecision(10) << helpers::myRound(n, -1);
 
 	return 0;
 }

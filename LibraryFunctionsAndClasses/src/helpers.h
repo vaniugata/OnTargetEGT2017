@@ -37,6 +37,7 @@ template <typename T> void printMatrix(T** matrix, int rows, int cols)
 	}
 }
 
+double myRound(double d_number, int decimalPlaces);
 
-} // namespace: hepler
+} // namespace: heplers
 #endif
