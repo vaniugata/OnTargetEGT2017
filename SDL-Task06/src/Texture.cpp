@@ -70,7 +70,7 @@ bool Texture::Render()
 		m_vecSprites.push_back(sprite);
 	}
 
-	for(int i = 0; i < 5/*(int) m_vecSprites.size()*/; i++)
+	for(int i = 0; i < NUMBER_OF_SPRITES; i++)
 	{
 		SDL_Rect rect;
 		rect.x = PIXEL_STEP + (2 * SPRITE_WIDTH * i);
