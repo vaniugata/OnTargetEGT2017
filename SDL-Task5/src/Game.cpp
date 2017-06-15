@@ -21,6 +21,19 @@ Game::~Game()
 {
 	SDL_DestroyTexture(m_texture);
 	m_texture = nullptr;
+
+	SDL_DestroyRenderer(m_renderer);
+	m_renderer = nullptr;
+
+	SDL_DestroyWindow(m_window);
+	m_window = nullptr;
+
+	TTF_CloseFont(m_font);
+	m_font = nullptr;
+
+	SDL_Quit();
+	IMG_Quit();
+	TTF_Quit();
 }
 
 void Game::Init()
