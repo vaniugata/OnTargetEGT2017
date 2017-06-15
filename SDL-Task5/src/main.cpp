@@ -13,5 +13,7 @@ int main(int args, char* argc[])
 		game->Play(&e);
 	}
 
+	game->~Game();
+
 	return 0;
 }
