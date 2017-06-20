@@ -41,10 +41,12 @@ void Game::Play()
 		}
 		SetVelocity(&m_event);
 	}
-	MovePlayer();
-	MoveCircle();
+		MovePlayer();
+		MoveCircle();
+
 	RenderPlayer();
 	RenderCircle();
+
 	SDL_RenderPresent(m_renderer);
 	SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 0);
 	SDL_RenderClear(m_renderer);
@@ -111,11 +113,13 @@ void Game::MovePlayer()
 	m_rectPlayer.x += m_velocity.x;
 	m_rectPlayer.y += m_velocity.y;
 
-	if(m_rectPlayer.x < 0 || m_rectPlayer.x + m_rectPlayer.w > SCREEN_WIDTH)
+	if(m_rectPlayer.x < 0 || (m_rectPlayer.x + m_rectPlayer.w > SCREEN_WIDTH) || \
+			CheckCollision(&m_rectPlayer, &m_rectCircle) )
 	{
 		m_rectPlayer.x -= m_velocity.x;
 	}
-	else if(m_rectPlayer.y < 0 || m_rectPlayer.y + m_rectPlayer.h > SCREEN_HEIGHT)
+	else if(m_rectPlayer.y < 0 || (m_rectPlayer.y + m_rectPlayer.h > SCREEN_HEIGHT) || \
+			CheckCollision(&m_rectPlayer, &m_rectCircle) )
 	{
 		m_rectPlayer.y -= m_velocity.y;
 	}
@@ -127,10 +131,11 @@ void Game::MoveCircle()
 	static bool goLeft = false;
 	static bool goDown = false;
 
-	if(m_rectCircle.x < 0 )
+	if(m_rectCircle.x < 0 ||  CheckCollision(&m_rectPlayer, &m_rectCircle) )
 		goLeft = true;
 
-	if(m_rectCircle.x + m_rectCircle.w > SCREEN_WIDTH)
+	if( (m_rectCircle.x + m_rectCircle.w > SCREEN_WIDTH) ||
+			CheckCollision(&m_rectPlayer, &m_rectCircle) )
 		goLeft = false;
 
 	if(goLeft)
@@ -138,9 +143,10 @@ void Game::MoveCircle()
 	else
 		m_rectCircle.x -= VELOCITY;
 
-	if(m_rectCircle.y < 0)
+	if(m_rectCircle.y < 0 || CheckCollision(&m_rectPlayer, &m_rectCircle) )
 		goDown = true;
-	else if (m_rectCircle.y + m_rectCircle.h > SCREEN_HEIGHT)
+	else if ( (m_rectCircle.y + m_rectCircle.h > SCREEN_HEIGHT) || \
+			CheckCollision(&m_rectPlayer, &m_rectCircle))
 		goDown = false;
 
 	if(goDown)
@@ -160,5 +166,35 @@ bool Game::IsInside()
 	}
 
 	return false;
+}
+
+bool Game::CheckCollision(SDL_Rect* a, SDL_Rect* b)
+{
+	int topA, botA, leftA, rightA;
+	int topB, botB, leftB, rightB;
+
+	topA = a->y;
+	botA = a->y + a->h;
+	leftA = a->x;
+	rightA = a->x + a->w;
+
+	topB = b->y;
+	botB = b->y + b->h;
+	leftB = b->x;
+	rightB = b->x + b->w;
+
+	if(botA <= topB )
+		return false;
+
+	if(botA >= botB)
+		return false;
+
+	if(rightA <= leftB)
+		return false;
+
+	if(leftA >= rightB)
+		return false;
+
+	return true;
 }
 

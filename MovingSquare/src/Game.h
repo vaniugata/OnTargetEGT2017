@@ -43,6 +43,7 @@ private:
 	void MovePlayer();
 	void MoveCircle();
 	bool IsInside();
+	bool CheckCollision(SDL_Rect* a, SDL_Rect* b);
 };
 
 #endif /* SRC_GAME_H_ */
