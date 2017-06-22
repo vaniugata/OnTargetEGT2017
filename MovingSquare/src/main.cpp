@@ -14,7 +14,7 @@ int main(int args, char* argc[])
 		game->Play();
 	}
 
-	game->~Game();
+	delete game;
 
 	return 0;
 }

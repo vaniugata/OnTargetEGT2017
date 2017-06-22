@@ -26,6 +26,9 @@ Game::~Game()
 	SDL_DestroyRenderer(m_renderer);
 	m_renderer = NULL;
 
+	SDL_DestroyTexture(m_textureCircle);
+	m_textureCircle = NULL;
+
 	SDL_Quit();
 }
 
@@ -41,8 +44,8 @@ void Game::Play()
 		}
 		SetVelocity(&m_event);
 	}
-		MovePlayer();
-		MoveCircle();
+	MovePlayer();
+	MoveCircle();
 
 	RenderPlayer();
 	RenderCircle();
@@ -186,7 +189,7 @@ bool Game::CheckCollision(SDL_Rect* a, SDL_Rect* b)
 	if(botA <= topB )
 		return false;
 
-	if(botA >= botB)
+	if(topA >= botB)
 		return false;
 
 	if(rightA <= leftB)
